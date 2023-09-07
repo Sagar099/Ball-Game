@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            height: 100vh;
+        }
+        .game{
+            height: 600px;
+            width: 600px;
+            border: 5px solid black;
+            
+        
+        }
+
+        .ball{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: yellow;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div class="container">
+        <div class="game">
+
+        </div>
+    </div>
+
+    <script>
+        window.onload=function(){
+            let ball=document.createElement("div")
+            ball.classList.add("ball")
+            let gameBox=document.querySelector(".game")
+            gameBox.appendChild(ball)
+        }
+    </script>
+
     
 </body>
 </html>
