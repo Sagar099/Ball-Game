@@ -38,6 +38,7 @@
             height: 200px;
             border-radius: 50%;
             /* background-color: yellow; */
+            margin: auto;
             
 
         }
@@ -76,6 +77,21 @@
             ball.classList.add("ball")
             let gamebox=document.querySelector(".game")
             //gamebox.appendChild(ball)
+            Math.ceil(Math.random()*10)%5
+
+            gamebox.onclick=function(e){
+                let clickedBall=game.balls.filter(b=>b.obj==e.target)[0]
+
+                if(clickedBall){
+                    if(clickedBall.color=="red")
+                    alert("Caught")
+                    else
+                    alert("Wrong")
+
+                }
+            }
+
+
 
             let player={
                 name:"",
@@ -140,13 +156,34 @@
                             gamebox.appendChild(ball.obj)
                         })
                         this.running=true
+                        // this.update()
+                },
+                update(){
+                    // console.log(this)
+                    // setTimeout(this.update,100)
 
-                }
-            };
+                    const ball=getRandomBall(this.balls)
+                    this.balls.map(b=>b.color="yellow")
+                ball.color="red"
+                this.balls.map(b=>b.toggle())
+            }
+        }
+
+        
+
+
+
+            function getRandomBall(balls){
+                let i=Math.ceil(Math.random()*100)%balls.length
+                return balls[i]
+            }
 
                 console.log(player.level,config[player.level])
                 console.log(getGridClassName(player,config))
                 game.start()
+                setInterval(()=>game.update(),100)
+
+
                 game.balls[2].color="red"
                 game.balls[2].toggle()
         };
